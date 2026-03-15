@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NSX Attorneys | Durban CBD</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #0d1b2a;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #f8f4ee;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e0d8cc;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    color: var(--text);
+    background: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(13, 27, 42, 0.97);
+    backdrop-filter: blur(8px);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 70px;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--navy) !important;
+    padding: 8px 20px;
+    border-radius: 2px;
+    font-weight: 500 !important;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center;
+    padding: 120px 5% 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 50%; height: 100%;
+    background: linear-gradient(135deg, transparent 0%, rgba(201,168,76,0.04) 100%);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .hero-content { max-width: 680px; animation: fadeUp 0.9s ease both; }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 6px 16px;
+    margin-bottom: 2rem;
+    border-radius: 2px;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 6vw, 72px);
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.6);
+    max-width: 500px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 14px 32px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); }
+
+  .btn-secondary {
+    border: 1px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.8);
+    padding: 14px 32px;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-stats {
+    display: flex; gap: 3rem;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    animation: fadeUp 0.9s 0.2s ease both;
+  }
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* ABOUT */
+  .about {
+    padding: 100px 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .about h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .about p {
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 1rem;
+    font-size: 15px;
+  }
+
+  .about-image {
+    background: var(--navy);
+    border-radius: 4px;
+    height: 420px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-image::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(201,168,76,0.03) 40px,
+      rgba(201,168,76,0.03) 41px
+    );
+  }
+
+  .about-image-inner {
+    text-align: center;
+    position: relative; z-index: 1;
+  }
+
+  .scales-icon {
+    width: 64px; height: 64px;
+    margin: 0 auto 1rem;
+    opacity: 0.4;
+  }
+
+  .about-image-inner p {
+    color: rgba(255,255,255,0.25);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* SERVICES */
+  .services {
+    background: var(--navy);
+    padding: 100px 5%;
+  }
+
+  .services-inner { max-width: 1200px; margin: 0 auto; }
+
+  .services-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .services-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+
+  .services-header p {
+    color: rgba(255,255,255,0.45);
+    font-size: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .service-card {
+    background: var(--navy);
+    padding: 2.5rem;
+    transition: background 0.3s;
+  }
+
+  .service-card:hover { background: #0f2035; }
+
+  .service-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    color: rgba(201,168,76,0.15);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .service-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: #fff;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+
+  .service-card p {
+    color: rgba(255,255,255,0.45);
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  /* TEAM */
+  .team {
+    padding: 100px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .team-header { margin-bottom: 4rem; }
+
+  .team-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 600;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+  }
+
+  .team-card { }
+
+  .team-photo {
+    background: var(--navy);
+    height: 260px;
+    border-radius: 4px;
+    margin-bottom: 1.25rem;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .team-photo::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+
+  .team-card:hover .team-photo::after { transform: scaleX(1); }
+
+  .team-initials {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    color: rgba(201,168,76,0.3);
+  }
+
+  .team-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .team-role {
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .team-bio {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* CONTACT */
+  .contact {
+    background: var(--navy);
+    padding: 100px 5%;
+  }
+
+  .contact-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .contact h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+
+  .contact > .contact-inner > div > p {
+    color: rgba(255,255,255,0.45);
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-detail {
+    display: flex; gap: 1rem; align-items: flex-start;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-icon {
+    width: 40px; height: 40px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contact-icon svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+  .contact-detail-label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 3px;
+  }
+
+  .contact-detail-value {
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+  .form-group label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 2px;
+    padding: 12px 16px;
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: rgba(201,168,76,0.5);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 120px; }
+
+  .form-group select option { background: var(--navy); }
+
+  .form-submit {
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    padding: 14px 32px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s;
+    align-self: flex-start;
+  }
+
+  .form-submit:hover { background: var(--gold-light); }
+
+  /* FOOTER */
+  footer {
+    background: #060e16;
+    padding: 2rem 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .footer-logo span { color: var(--gold); }
+
+  footer p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.2);
+  }
+
+  /* BUILT BY BANNER */
+  .built-by {
+    background: #0a0a0a;
+    padding: 1.25rem 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    position: relative;
+  }
+
+  .built-by::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #00e5a0, #00b8ff, #7b5ea7);
+  }
+
+  .built-by-brand {
+    display: flex; flex-direction: column; gap: 2px;
+  }
+
+  .built-by-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #fff;
+  }
+
+  .built-by-title {
+    font-size: 10px;
+    color: #00e5a0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .built-by-contacts {
+    display: flex; gap: 2rem; flex-wrap: wrap; align-items: center;
+  }
+
+  .built-by-item {
+    display: flex; flex-direction: column; gap: 1px;
+  }
+
+  .built-by-label {
+    font-size: 9px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .built-by-value {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    font-family: 'Outfit', sans-serif;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .about { grid-template-columns: 1fr; gap: 2rem; }
+    .about-image { height: 240px; }
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">NSX <span>Attorneys</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-tag">Attorneys · Durban CBD, South Africa</span>
+    <h1>Exceptional Legal Counsel in the Heart of <em>Durban</em></h1>
+    <p>NSX Attorneys is a dynamic Durban law firm delivering focused, high-quality legal services to individuals and businesses across KwaZulu-Natal.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Book a Consultation</a>
+      <a href="#services" class="btn-secondary">Our Services</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="stat-number">20+</span>
+        <span class="stat-label">Years experience</span>
+      </div>
+      <div>
+        <span class="stat-number">500+</span>
+        <span class="stat-label">Cases resolved</span>
+      </div>
+      <div>
+        <span class="stat-number">98%</span>
+        <span class="stat-label">Client satisfaction</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div>
+    <span class="section-tag">Who We Are</span>
+    <h2>A Dynamic Law Firm at Durban's Centre</h2>
+    <p>NSX Attorneys is situated on the 10th floor of Denor House, 356 cnr Smith Street & Joe Slovo Street — in the heart of Durban's CBD, steps away from the courts and business district.</p>
+    <p>We combine sharp legal expertise with a client-first approach — delivering practical, no-nonsense solutions across a broad range of legal matters.</p>
+    <p>Whether you are an individual navigating a legal dispute or a business seeking sound legal counsel, NSX Attorneys is ready to stand in your corner.</p>
+  </div>
+  <div class="about-image">
+    <div class="about-image-inner">
+      <svg class="scales-icon" viewBox="0 0 64 64" fill="none" stroke="rgba(201,168,76,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="32" y1="8" x2="32" y2="56"/>
+        <line x1="16" y1="8" x2="48" y2="8"/>
+        <path d="M16 8 L8 28 Q16 34 24 28 L16 8"/>
+        <path d="M48 8 L40 28 Q48 34 56 28 L48 8"/>
+        <line x1="24" y1="56" x2="40" y2="56"/>
+      </svg>
+      <p>NSX Attorneys · Durban CBD</p>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="services-header">
+      <span class="section-tag" style="color: var(--gold);">What We Do</span>
+      <h2>Our Areas of Practice</h2>
+      <p>Comprehensive legal services tailored to your needs, delivered with professionalism and care.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-number">01</div>
+        <h3>Civil Litigation</h3>
+        <p>Representation in Magistrate's Court and High Court for disputes, damages claims, and contested matters.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-number">02</div>
+        <h3>Criminal Defence</h3>
+        <p>Bail applications, plea proceedings, and criminal defence representation across KwaZulu-Natal courts.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-number">03</div>
+        <h3>Labour Law</h3>
+        <p>CCMA representation, unfair dismissals, retrenchments, and employment contract disputes.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-number">04</div>
+        <h3>Debt Recovery</h3>
+        <p>Efficient recovery of outstanding amounts through demand, summons, and judgment enforcement.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-number">05</div>
+        <h3>Urgent Applications</h3>
+        <p>Interdicts and urgent court relief when immediate legal action is needed to protect your rights.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-number">06</div>
+        <h3>Contracts & Agreements</h3>
+        <p>Drafting and reviewing commercial and personal contracts to safeguard your legal interests.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div>
+      <span class="section-tag">Get in Touch</span>
+      <h2>Book a Consultation</h2>
+      <p>Our first consultation is obligation-free. Reach out and one of our attorneys will be in touch within 24 hours.</p>
+      <div class="contact-detail">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <div class="contact-detail-label">Address</div>
+          <div class="contact-detail-value">Suite 1002, 10th Floor, Denor House, 356 cnr Smith St & Joe Slovo St, Durban, 4001</div>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.06 1.18 2 2 0 012.03 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div>
+          <div class="contact-detail-label">Phone</div>
+          <div class="contact-detail-value">+27 76 945 0697</div>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <div class="contact-detail-label">Email</div>
+          <div class="contact-detail-value">info@nsxattorneys.co.za</div>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="return false;">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" placeholder="Your full name">
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+27 00 000 0000">
+      </div>
+      <div class="form-group">
+        <label>Area of Law</label>
+        <select>
+          <option value="">Select a practice area</option>
+          <option>Civil Litigation</option>
+          <option>Criminal Defence</option>
+          <option>Labour Law</option>
+          <option>Debt Recovery</option>
+          <option>Urgent Application</option>
+          <option>Contracts & Agreements</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Brief Description</label>
+        <textarea placeholder="Briefly describe your legal matter..."></textarea>
+      </div>
+      <button class="form-submit">Send Enquiry</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">NSX <span>Attorneys</span></div>
+  <p>© 2025 NSX Attorneys. All rights reserved.</p>
+  <p>Registered with the Law Society of South Africa</p>
+</footer>
+
+<div class="built-by">
+  <div class="built-by-brand">
+    <span class="built-by-name">Siyio Labs</span>
+    <span class="built-by-title">Web Designer</span>
+  </div>
+  <div class="built-by-contacts">
+    <div class="built-by-item">
+      <span class="built-by-label">Email</span>
+      <span class="built-by-value">siyiolabs@outlook.com</span>
+    </div>
+    <div class="built-by-item">
+      <span class="built-by-label">WhatsApp</span>
+      <span class="built-by-value">+27 84 084 9230</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
